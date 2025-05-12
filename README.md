@@ -1,2 +1,98 @@
-# barbeapapa
-Formulaire afin de recevoir un code pour une barbeapap gratuite
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Barbe à Papa 🍭</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #fceabb, #f8b500);
+      text-align: center;
+      padding: 2em;
+    }
+    .container {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 2em;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    input, select, button {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      background-color: #f8b500;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .code-output {
+      font-size: 2em;
+      font-weight: bold;
+      color: #d35400;
+      margin-top: 1.5em;
+    }
+    .thank-you {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-top: 1em;
+      color: #2c3e50;
+    }
+    .logo {
+      width: 120px;
+      margin-bottom: 1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="formContainer">
+    <img src="https://cdn.pixabay.com/photo/2021/07/02/20/26/cotton-candy-6382674_960_720.png" alt="Barbe à papa" class="logo">
+    <h1>🎉 CODE BARBE À PAPA 🍭</h1>
+    <p>Remplissez ce petit formulaire, partagez un message sur vos réseaux sociaux, et obtenez votre code pour une barbe à papa gratuite !</p>
+
+    <form id="barbeForm">
+      <input type="text" id="nom" placeholder="Nom" required>
+      <input type="text" id="prenom" placeholder="Prénom" required>
+      <input type="email" id="email" placeholder="Adresse e-mail" required>
+      <input type="tel" id="gsm" placeholder="Numéro de GSM" required>
+      <select id="reseau" required>
+        <option value="">Choisissez un réseau social</option>
+        <option value="facebook">Facebook</option>
+        <option value="instagram">Instagram</option>
+        <option value="tiktok">TikTok</option>
+        <option value="linkedin">LinkedIn</option>
+      </select>
+      <label><input type="checkbox" required> J'ai bien partagé l'événement</label>
+      <button type="submit">Obtenir mon code</button>
+    </form>
+  </div>
+
+  <div class="container" id="codeContainer" style="display: none;">
+    <div class="thank-you">Merci 🙏</div>
+    <div class="code-output" id="codeOutput">Votre code arrive...</div>
+    <p>Montrez ce code à la personne qui distribue les barbes à papa 🍭</p>
+  </div>
+
+  <script>
+    function generateCode() {
+      const digits = Math.floor(1000 + Math.random() * 9000);
+      return 'CBP-' + digits;
+    }
+
+    document.getElementById('barbeForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const code = generateCode();
+      document.getElementById('codeOutput').innerHTML = code;
+      document.getElementById('formContainer').style.display = 'none';
+      document.getElementById('codeContainer').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
+
